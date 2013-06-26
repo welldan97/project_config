@@ -6,7 +6,7 @@ module ProjectConfig
   end
 
   def self.setup name, options={}
-    ProjectSettings.source "#{ENV['PROJECT_CONFIGS_PATH']}/#{name}.yaml"
+    ProjectSettings.source "#{ENV['PROJECT_CONFIGS_PATH']}/#{name}/config.yaml"
     ProjectSettings.namespace options[:environment] if options[:environment]
     ProjectSettings.load!
   end
