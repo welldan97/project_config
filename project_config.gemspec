@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Dmitry Yakimov"]
   gem.email         = ["welldan97@gmail.com"]
   gem.description   = %q{Makes configuration easier}
-  gem.summary       = %q{Project config which makes fetching configuration easier}
+  gem.summary       = %q{Provides a tool to fetch project configuration from yaml repo}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
