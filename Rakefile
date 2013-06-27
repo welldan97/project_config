@@ -23,7 +23,7 @@ end
 desc 'Unlock configs folder'
 task :unlock do
   `chmod 755 configs`
-  `chown #{current_user} configs`
+  `chown $(logname) configs`
   puts "Unlocked"
 end
 
@@ -34,10 +34,6 @@ task :toggle do
   else
     Rake::Task['unlock'].invoke
   end
-end
-
-def current_user
-  `who am i | cut -f1 -d ' '`.chomp
 end
 
 def file_mode file
