@@ -1,3 +1,6 @@
+configs/*
+!configs/*.gitkeep
+
 *.gem
 *.rbc
 .bundle
