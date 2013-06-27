@@ -29,13 +29,10 @@ end
 
 desc 'Lock or unlock configs folder'
 task :toggle do
-  if file_mode('configs') == '755'
-    Rake::Task['lock'].invoke
-  else
-    Rake::Task['unlock'].invoke
-  end
+  task = locked? ? :unlock : :lock
+  Rake::Task[task].invoke
 end
 
-def file_mode file
-  File.stat('configs').mode.to_s(8)[-3..-1]
+def locked?
+  File.stat('configs').mode.to_s(8)[-3..-1] == '700'
 end
