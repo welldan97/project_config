@@ -14,14 +14,14 @@ module ProjectConfig
   end
 
   def self.setup name, options={}
-    @source = if options[:source] == :env
-                EnvSettings
-              else
-                ProjectSettings
-              end
-    ProjectSettings.source "#{ENV['PROJECT_CONFIGS_PATH']}/#{name}/config.yaml"
-    ProjectSettings.namespace options[:environment] if options[:environment]
-    ProjectSettings.load!
+    if options[:source] == :env
+      @source = EnvSettings
+    else
+      @source = ProjectSettings
+      ProjectSettings.source "#{ENV['PROJECT_CONFIGS_PATH']}/#{name}/config.yaml"
+      ProjectSettings.namespace options[:environment] if options[:environment]
+      ProjectSettings.load!
+    end
   end
 
   def self.method_missing(method, *args)
