@@ -19,4 +19,13 @@ describe ProjectConfig do
     ProjectConfig.reload! # tests fix
     expect(ProjectConfig.user_name).to eq 'Elvis Presley'
   end
+
+  describe 'environment variables' do
+    it 'get values from envirorment variables if source is specified as env' do
+      ENV['user_name'] = 'Paul McCartney'
+      setup_project_config :project_name, source: :env
+      ProjectConfig.reload! # tests fix
+      expect(ProjectConfig.user_name).to eq 'Paul McCartney'
+    end
+  end
 end
